@@ -1,0 +1,72 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+# If you build/transpile
+dist/
+build/
+out/
+# TypeScript incremental
+*.tsbuildinfo
+
+# Runtime files
+.env
+.env.local
+.env.*.local
+.env.test
+.env.production
+*.pid
+*.seed
+*.pid.lock
+logs/
+*.log
+pids/
+tmp/
+temp/
+coverage/
+.nyc_output/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors/IDEs
+.vscode/
+.idea/
+*.sublime-*
+*.code-workspace
+*.iml
+
+# Dependency directories for other package managers
+bower_components/
+
+# Locks and package metadata (uncomment if you prefer to ignore lockfiles)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Databases / uploads
+*.sqlite
+*.sqlite3
+dump.rdb
+uploads/
+storage/
+media/
+
+# Docker
+docker-compose.override.yml
+
+# SSL / keys
+*.key
+*.crt
+*.pem
+
+# Misc
+.cache/
+coverage/
+*.local
+*.bak
+*.tmp
