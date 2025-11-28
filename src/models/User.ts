@@ -32,13 +32,29 @@ const userSchema = new Schema<IUser>(
       match: [/^[0-9]{10,15}$/, "Provide a valid phone number"],
     },
 
-    password: { type: String, required: true, minlength: 6, select: false },
+    password: {
+      type: String,
+      required: true,
+      minlength: 6,
+      select: false,
+    },
 
-    role: { type: String, enum: ["user", "admin"], default: "user" },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
 
-    wallet: { type: Number, default: 0, min: 0 },
+    wallet: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
 
-    isVerified: { type: Boolean, default: false },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
