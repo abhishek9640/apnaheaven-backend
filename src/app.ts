@@ -10,24 +10,20 @@ import { fileURLToPath } from "url";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import propertyRoutes from "./routes/propertyRoutes.js";
+import locationRoutes from "./routes/locationRoutes.js"; // Add this
 
-// Get __dirname equivalent in ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load environment variables
 dotenv.config();
 
-// Initialize Express app
 const app: Application = express();
 
-// Connect to MongoDB
 connectDB();
 
-// Middleware
 app.use(
   helmet({
-    crossOriginResourcePolicy: { policy: "cross-origin" }, // Allow images to be loaded
+    crossOriginResourcePolicy: { policy: "cross-origin" },
   })
 );
 app.use(cors());
@@ -35,10 +31,9 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files - uploaded images
+// Serve static files
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
-// Health check route
 app.get("/health", (req: Request, res: Response) => {
   res.status(200).json({
     success: true,
@@ -50,6 +45,7 @@ app.get("/health", (req: Request, res: Response) => {
 // API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/properties", propertyRoutes);
+app.use("/api/locations", locationRoutes); // Add this
 
 // 404 Handler
 app.use((req: Request, res: Response) => {
@@ -69,7 +65,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-// Start server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

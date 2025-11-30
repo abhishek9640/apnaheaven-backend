@@ -2,7 +2,7 @@ import { Router } from "express";
 import PropertyController from "../controllers/propertyController.js";
 import { verifyAuth } from "../middleware/auth.js";
 import { verifyAdmin } from "../middleware/adminAuth.js";
-import { upload } from "../config/multer.js";
+import { uploadProperty } from "../config/multer.js"; // Update import
 
 const router = Router();
 
@@ -14,14 +14,14 @@ router.get("/:id", PropertyController.getPropertyById.bind(PropertyController));
 router.post(
   "/",
   verifyAdmin,
-  upload.array("images", 10),
+  uploadProperty.array("images", 10), // Use uploadProperty
   PropertyController.createProperty.bind(PropertyController)
 );
 
 router.put(
   "/:id",
   verifyAdmin,
-  upload.array("images", 10),
+  uploadProperty.array("images", 10), // Use uploadProperty
   PropertyController.updateProperty.bind(PropertyController)
 );
 
